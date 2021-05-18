@@ -1,0 +1,221 @@
+[cloudera@quickstart ~]$ ls
+cloudera-manager  Downloads                   kerberos  Pictures   workspace
+cm_api.py         eclipse                     lib       Public
+Desktop           enterprise-deployment.json  Music     Templates
+Documents         express-deployment.json     parcels   Videos
+[cloudera@quickstart ~]$ cd ./home
+bash: cd: ./home: No such file or directory
+[cloudera@quickstart ~]$ cd /home
+[cloudera@quickstart home]$ ls
+cloudera
+[cloudera@quickstart home]$ cd cloudera/
+[cloudera@quickstart ~]$ ls
+cloudera-manager  Downloads                   kerberos  Pictures   workspace
+cm_api.py         eclipse                     lib       Public
+Desktop           enterprise-deployment.json  Music     Templates
+Documents         express-deployment.json     parcels   Videos
+[cloudera@quickstart ~]$ vi LIstOfRules.txt
+[cloudera@quickstart ~]$ hadoop fs -put /home/cloudera/LIstOfRule.txt /user/cloudera
+put: `/home/cloudera/LIstOfRule.txt': No such file or directory
+[cloudera@quickstart ~]$ hadoop fs -put /home/cloudera/LIstOfRules.txt /user/cloudera
+[cloudera@quickstart ~]$ hadoop arg.apache.hadoop.examples.Grep .user/cloudera/LIstOfRules.txt /user/cloudera/Out4Grep01 ".*a1.*"
+Error: Could not find or load main class arg.apache.hadoop.examples.Grep
+[cloudera@quickstart ~]$ hadoop org.apache.hadoop.examples.Grep .user/cloudera/LIstOfRules.txt /user/cloudera/Out4Grep01 ".*a1.*"
+19/08/29 12:09:17 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/08/29 12:09:19 WARN mapreduce.JobResourceUploader: No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+19/08/29 12:09:19 INFO mapreduce.JobSubmitter: Cleaning up the staging area /tmp/hadoop-yarn/staging/cloudera/.staging/job_1567105104947_0001
+19/08/29 12:09:19 WARN security.UserGroupInformation: PriviledgedActionException as:cloudera (auth:SIMPLE) cause:org.apache.hadoop.mapreduce.lib.input.InvalidInputException: Input path does not exist: hdfs://quickstart.cloudera:8020/user/cloudera/.user/cloudera/LIstOfRules.txt
+Exception in thread "main" org.apache.hadoop.mapreduce.lib.input.InvalidInputException: Input path does not exist: hdfs://quickstart.cloudera:8020/user/cloudera/.user/cloudera/LIstOfRules.txt
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.singleThreadedListStatus(FileInputFormat.java:323)
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.listStatus(FileInputFormat.java:265)
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.getSplits(FileInputFormat.java:387)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeNewSplits(JobSubmitter.java:305)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeSplits(JobSubmitter.java:322)
+	at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:200)
+	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1307)
+	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1304)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1917)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:1304)
+	at org.apache.hadoop.mapreduce.Job.waitForCompletion(Job.java:1325)
+	at org.apache.hadoop.examples.Grep.run(Grep.java:77)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at org.apache.hadoop.examples.Grep.main(Grep.java:101)
+[cloudera@quickstart ~]$ hadoop org.apache.hadoop.examples.Grep .user/cloudera/LIstOfRules.txt /user/cloudera/Out4Grep01 ".*a1.*"
+19/08/29 12:10:10 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/08/29 12:10:11 WARN mapreduce.JobResourceUploader: No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+19/08/29 12:10:11 INFO mapreduce.JobSubmitter: Cleaning up the staging area /tmp/hadoop-yarn/staging/cloudera/.staging/job_1567105104947_0002
+19/08/29 12:10:11 WARN security.UserGroupInformation: PriviledgedActionException as:cloudera (auth:SIMPLE) cause:org.apache.hadoop.mapreduce.lib.input.InvalidInputException: Input path does not exist: hdfs://quickstart.cloudera:8020/user/cloudera/.user/cloudera/LIstOfRules.txt
+Exception in thread "main" org.apache.hadoop.mapreduce.lib.input.InvalidInputException: Input path does not exist: hdfs://quickstart.cloudera:8020/user/cloudera/.user/cloudera/LIstOfRules.txt
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.singleThreadedListStatus(FileInputFormat.java:323)
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.listStatus(FileInputFormat.java:265)
+	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.getSplits(FileInputFormat.java:387)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeNewSplits(JobSubmitter.java:305)
+	at org.apache.hadoop.mapreduce.JobSubmitter.writeSplits(JobSubmitter.java:322)
+	at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:200)
+	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1307)
+	at org.apache.hadoop.mapreduce.Job$10.run(Job.java:1304)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:415)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1917)
+	at org.apache.hadoop.mapreduce.Job.submit(Job.java:1304)
+	at org.apache.hadoop.mapreduce.Job.waitForCompletion(Job.java:1325)
+	at org.apache.hadoop.examples.Grep.run(Grep.java:77)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:70)
+	at org.apache.hadoop.examples.Grep.main(Grep.java:101)
+[cloudera@quickstart ~]$ hadoop fs -ls
+Found 1 items
+-rw-r--r--   1 cloudera cloudera        190 2019-08-29 12:07 LIstOfRules.txt
+[cloudera@quickstart ~]$ hadoop org.apache.hadoop.examples.Grep /user/cloudera/LIstOfRules.txt /user/cloudera/Out4Grep01 ".*a1.*"
+19/08/29 12:11:35 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/08/29 12:11:37 WARN mapreduce.JobResourceUploader: No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+19/08/29 12:11:37 INFO input.FileInputFormat: Total input paths to process : 1
+19/08/29 12:11:37 INFO mapreduce.JobSubmitter: number of splits:1
+19/08/29 12:11:38 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1567105104947_0003
+19/08/29 12:11:39 INFO mapred.YARNRunner: Job jar is not present. Not adding any jar to the list of resources.
+19/08/29 12:11:40 INFO impl.YarnClientImpl: Submitted application application_1567105104947_0003
+19/08/29 12:11:40 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1567105104947_0003/
+19/08/29 12:11:40 INFO mapreduce.Job: Running job: job_1567105104947_0003
+19/08/29 12:12:16 INFO mapreduce.Job: Job job_1567105104947_0003 running in uber mode : false
+19/08/29 12:12:16 INFO mapreduce.Job:  map 0% reduce 0%
+19/08/29 12:12:58 INFO mapreduce.Job:  map 100% reduce 0%
+19/08/29 12:13:18 INFO mapreduce.Job:  map 100% reduce 100%
+19/08/29 12:13:19 INFO mapreduce.Job: Job job_1567105104947_0003 completed successfully
+19/08/29 12:13:19 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=178
+		FILE: Number of bytes written=287957
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=316
+		HDFS: Number of bytes written=276
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=34504
+		Total time spent by all reduces in occupied slots (ms)=17364
+		Total time spent by all map tasks (ms)=34504
+		Total time spent by all reduce tasks (ms)=17364
+		Total vcore-milliseconds taken by all map tasks=34504
+		Total vcore-milliseconds taken by all reduce tasks=17364
+		Total megabyte-milliseconds taken by all map tasks=35332096
+		Total megabyte-milliseconds taken by all reduce tasks=17780736
+	Map-Reduce Framework
+		Map input records=4
+		Map output records=3
+		Map output bytes=166
+		Map output materialized bytes=178
+		Input split bytes=126
+		Combine input records=3
+		Combine output records=3
+		Reduce input groups=3
+		Reduce shuffle bytes=178
+		Reduce input records=3
+		Reduce output records=3
+		Spilled Records=6
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=725
+		CPU time spent (ms)=3460
+		Physical memory (bytes) snapshot=483307520
+		Virtual memory (bytes) snapshot=3130032128
+		Total committed heap usage (bytes)=376438784
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=190
+	File Output Format Counters 
+		Bytes Written=276
+19/08/29 12:13:19 INFO client.RMProxy: Connecting to ResourceManager at /0.0.0.0:8032
+19/08/29 12:13:19 WARN mapreduce.JobResourceUploader: No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+19/08/29 12:13:20 INFO input.FileInputFormat: Total input paths to process : 1
+19/08/29 12:13:20 INFO mapreduce.JobSubmitter: number of splits:1
+19/08/29 12:13:20 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1567105104947_0004
+19/08/29 12:13:20 INFO mapred.YARNRunner: Job jar is not present. Not adding any jar to the list of resources.
+19/08/29 12:13:20 INFO impl.YarnClientImpl: Submitted application application_1567105104947_0004
+19/08/29 12:13:20 INFO mapreduce.Job: The url to track the job: http://quickstart.cloudera:8088/proxy/application_1567105104947_0004/
+19/08/29 12:13:20 INFO mapreduce.Job: Running job: job_1567105104947_0004
+19/08/29 12:13:38 INFO mapreduce.Job: Job job_1567105104947_0004 running in uber mode : false
+19/08/29 12:13:38 INFO mapreduce.Job:  map 0% reduce 0%
+19/08/29 12:13:58 INFO mapreduce.Job:  map 100% reduce 0%
+19/08/29 12:14:17 INFO mapreduce.Job:  map 100% reduce 100%
+19/08/29 12:14:18 INFO mapreduce.Job: Job job_1567105104947_0004 completed successfully
+19/08/29 12:14:18 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=178
+		FILE: Number of bytes written=286803
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=420
+		HDFS: Number of bytes written=148
+		HDFS: Number of read operations=7
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=18294
+		Total time spent by all reduces in occupied slots (ms)=15808
+		Total time spent by all map tasks (ms)=18294
+		Total time spent by all reduce tasks (ms)=15808
+		Total vcore-milliseconds taken by all map tasks=18294
+		Total vcore-milliseconds taken by all reduce tasks=15808
+		Total megabyte-milliseconds taken by all map tasks=18733056
+		Total megabyte-milliseconds taken by all reduce tasks=16187392
+	Map-Reduce Framework
+		Map input records=3
+		Map output records=3
+		Map output bytes=166
+		Map output materialized bytes=178
+		Input split bytes=144
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=1
+		Reduce shuffle bytes=178
+		Reduce input records=3
+		Reduce output records=3
+		Spilled Records=6
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=284
+		CPU time spent (ms)=3270
+		Physical memory (bytes) snapshot=493109248
+		Virtual memory (bytes) snapshot=3130892288
+		Total committed heap usage (bytes)=379584512
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=276
+	File Output Format Counters 
+		Bytes Written=148
+[cloudera@quickstart ~]$ hadoop fs -ls /user/cloudera/Out4Grep01
+Found 2 items
+-rw-r--r--   1 cloudera cloudera          0 2019-08-29 12:14 /user/cloudera/Out4Grep01/_SUCCESS
+-rw-r--r--   1 cloudera cloudera        148 2019-08-29 12:14 /user/cloudera/Out4Grep01/part-r-00000
+[cloudera@quickstart ~]$ hadoop fs -cat /user/cloudera/Out4Grep01/part-r-00000
+1	(a, a1->a3) ^ (c = c2) -> (f, f1->f0) [1, 80%]
+1	(a, a1->a3) ^ (b, ->b1) -> (f, f1->f0) [3, 75%]
+1	(a, a1->a2) ^ (c = c2) -> (f, f1->f0) [2, 50%]
+[cloudera@quickstart ~]$ hadoop fs -get /user/cloudera/Out4Grep01/part-r-00000 /home/cloudera/outputFile.txt
+[cloudera@quickstart ~]$ ^C
+[cloudera@quickstart ~]$ 

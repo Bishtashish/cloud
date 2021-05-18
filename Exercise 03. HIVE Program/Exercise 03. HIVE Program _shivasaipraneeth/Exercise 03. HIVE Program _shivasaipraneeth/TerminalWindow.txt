@@ -1,0 +1,77 @@
+
+
+<<<< NAME: SHIVA SAI PRANEETH CHAKINALA >>>>
+<<<< STUDENT ID : 801147603 >>>>
+
+
+
+Using username "hadoop".
+Authenticating with public key "imported-openssh-key"
+Passphrase for key "imported-openssh-key":
+Wrong passphrase
+Passphrase for key "imported-openssh-key":
+Wrong passphrase
+Passphrase for key "imported-openssh-key":
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+6 package(s) needed for security, out of 8 available
+Run "sudo yum update" to apply all updates.
+
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+
+[hadoop@ip-172-31-45-74 ~]$ hive
+
+Logging initialized using configuration in file:/etc/hive/conf.dist/hive-log4j2.properties Async: false
+hive> CREATE TABLE schakinaCarData(Buying STRING,Maint STRING,Doors STRING,Persons STRING,LugBoot STRING,Safety STRING,Class String)
+    > COMMENT 'This is the Cars table'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 1.779 seconds
+hive> load data inpath 's3://801147603bucket/data.txt' overwrite into table schakinaCarData;
+Loading data to table default.schakinacardata
+OK
+Time taken: 7.132 seconds
+hive> INSERT OVERWRITE LOCAL DIRECTORY './CarDataHiveOutput'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > SELECT * FROM schakinaCarData
+    > WHERE schakinaCarData.Buying = 'vhigh'
+    > AND schakinaCarData.Doors LIKE '%more'
+    > AND schakinaCarData.Class = 'unacc';
+Query ID = hadoop_20190915125220_524d37ac-7839-4566-bd19-71789ab3a138
+Total jobs = 1
+Launching Job 1 out of 1
+Status: Running (Executing on YARN cluster with App id application_1568551319098_0001)
+
+----------------------------------------------------------------------------------------------
+        VERTICES      MODE        STATUS  TOTAL  COMPLETED  RUNNING  PENDING  FAILED  KILLED
+----------------------------------------------------------------------------------------------
+Map 1 .......... container     SUCCEEDED      1          1        0        0       0       0
+----------------------------------------------------------------------------------------------
+VERTICES: 01/01  [==========================>>] 100%  ELAPSED TIME: 7.37 s
+----------------------------------------------------------------------------------------------
+Moving data to local directory CarDataHiveOutput
+OK
+Time taken: 12.008 seconds
+hive> quit;
+[hadoop@ip-172-31-45-74 ~]$ ls
+CarDataHiveOutput                                                     
+[hadoop@ip-172-31-45-74 ~]$ aws s3 cp ./CarDataHiveOutput/000000_0 s3://801147603bucket/CarDataHiveOutput.txt
+upload: CarDataHiveOutput/000000_0 to s3://801147603bucket/CarDataHiveOutput.txt

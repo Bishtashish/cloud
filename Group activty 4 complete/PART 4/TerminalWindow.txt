@@ -1,0 +1,554 @@
+Using username "hadoop".
+Authenticating with public key "mykey"
+Last login: Tue Feb 23 20:36:51 2021
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+38 package(s) needed for security, out of 76 available
+Run "sudo yum update" to apply all updates.
+
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+
+                                                                    \
+[hadoop@ip-172-31-41-187 ~]$ aws s3 cp s3://ga4/SparkAction-0.0.1-SNAPSHOT.jar .\
+download: s3://ga4/SparkAction-0.0.1-SNAPSHOT.jar to ./SparkAction-0.0.1-SNAPSHOT.jar\
+[hadoop@ip-172-31-41-187 ~]$ spark-submit --class org.ActionRules.Main --master yarn --deploy-mode client ./SparkAction-0.0.1-SNAPSHOT.jar s3://ga4/attributes.txt s3://ga4/parameters.txt s3://ga4/data.txt s3://ga4/SparkActionRulesOutput\
+21/02/24 23:43:46 INFO SparkContext: Running Spark version 2.4.0\
+21/02/24 23:43:46 INFO SparkContext: Submitted application: SparkAction\
+21/02/24 23:43:46 INFO SecurityManager: Changing view acls to: hadoop\
+21/02/24 23:43:46 INFO SecurityManager: Changing modify acls to: hadoop\
+21/02/24 23:43:46 INFO SecurityManager: Changing view acls groups to: \
+21/02/24 23:43:46 INFO SecurityManager: Changing modify acls groups to: \
+21/02/24 23:43:46 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()\
+21/02/24 23:43:46 INFO Utils: Successfully started service 'sparkDriver' on port 39305.\
+21/02/24 23:43:46 INFO SparkEnv: Registering MapOutputTracker\
+21/02/24 23:43:46 INFO SparkEnv: Registering BlockManagerMaster\
+21/02/24 23:43:46 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information\
+21/02/24 23:43:46 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up\
+21/02/24 23:43:46 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-8588aec6-6942-4a36-b7c1-a210cd796e11\
+21/02/24 23:43:46 INFO MemoryStore: MemoryStore started with capacity 424.4 MB\
+21/02/24 23:43:46 INFO SparkEnv: Registering OutputCommitCoordinator\
+21/02/24 23:43:47 INFO Utils: Successfully started service 'SparkUI' on port 4040.\
+21/02/24 23:43:47 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-41-187.us-east-2.compute.internal:4040\
+21/02/24 23:43:47 INFO SparkContext: Added JAR file:/home/hadoop/./SparkAction-0.0.1-SNAPSHOT.jar at spark://ip-172-31-41-187.us-east-2.compute.internal:39305/jars/SparkAction-0.0.1-SNAPSHOT.jar with timestamp 1553643827330\
+21/02/24 23:43:47 INFO Executor: Starting executor ID driver on host localhost\
+21/02/24 23:43:47 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 39833.\
+21/02/24 23:43:47 INFO NettyBlockTransferService: Server created on ip-172-31-41-187.us-east-2.compute.internal:39833\
+21/02/24 23:43:47 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy\
+21/02/24 23:43:47 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 39833, None)\
+21/02/24 23:43:47 INFO BlockManagerMasterEndpoint: Registering block manager ip-172-31-41-187.us-east-2.compute.internal:39833 with 424.4 MB RAM, BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 39833, None)\
+21/02/24 23:43:47 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 39833, None)\
+21/02/24 23:43:47 INFO BlockManager: external shuffle service port = 7337\
+21/02/24 23:43:47 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 39833, None)\
+21/02/24 23:43:49 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/local-1553643827426\
+21/02/24 23:43:49 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 237.3 KB, free 424.2 MB)\
+21/02/24 23:43:49 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 24.1 KB, free 424.2 MB)\
+21/02/24 23:43:49 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:43:49 INFO SparkContext: Created broadcast 0 from textFile at LERS.scala:26\
+21/02/24 23:43:49 INFO GPLNativeCodeLoader: Loaded native gpl library\
+21/02/24 23:43:49 INFO LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev 1546b8dc0ca6f1ffd26a812d52bd7b80915e0a25]\
+21/02/24 23:43:52 INFO FileInputFormat: Total input files to process : 1\
+21/02/24 23:43:52 INFO SparkContext: Starting job: count at LERS.scala:30\
+21/02/24 23:43:52 INFO DAGScheduler: Got job 0 (count at LERS.scala:30) with 1 output partitions\
+21/02/24 23:43:52 INFO DAGScheduler: Final stage: ResultStage 0 (count at LERS.scala:30)\
+21/02/24 23:43:52 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:43:52 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:43:52 INFO DAGScheduler: Submitting ResultStage 0 (s3://ga4/attributes.txt MapPartitionsRDD[1] at textFile at LERS.scala:26), which has no missing parents\
+21/02/24 23:43:52 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 3.3 KB, free 424.2 MB)\
+21/02/24 23:43:52 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 2025.0 B, free 424.2 MB)\
+21/02/24 23:43:52 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 2025.0 B, free: 424.4 MB)\
+21/02/24 23:43:52 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:43:52 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (s3://ga4/attributes.txt MapPartitionsRDD[1] at textFile at LERS.scala:26) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:43:52 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks\
+21/02/24 23:43:52 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:43:52 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)\
+21/02/24 23:43:52 INFO Executor: Fetching spark://ip-172-31-41-187.us-east-2.compute.internal:39305/jars/SparkAction-0.0.1-SNAPSHOT.jar with timestamp 1553643827330\
+21/02/24 23:43:52 INFO TransportClientFactory: Successfully created connection to ip-172-31-41-187.us-east-2.compute.internal/172.31.39.202:39305 after 64 ms (0 ms spent in bootstraps)\
+21/02/24 23:43:52 INFO Utils: Fetching spark://ip-172-31-41-187.us-east-2.compute.internal:39305/jars/SparkAction-0.0.1-SNAPSHOT.jar to /mnt/tmp/spark-3bb23cba-3f06-4e8e-9505-870d4ea6d491/userFiles-e6ad0c71-d2d4-41d1-94eb-e13f3229d88a/fetchFileTemp5078974325843786962.tmp\
+21/02/24 23:43:52 INFO Executor: Adding file:/mnt/tmp/spark-3bb23cba-3f06-4e8e-9505-870d4ea6d491/userFiles-e6ad0c71-d2d4-41d1-94eb-e13f3229d88a/SparkAction-0.0.1-SNAPSHOT.jar to class loader\
+21/02/24 23:43:52 INFO HadoopRDD: Input split: s3://ga4/attributes.txt:0+46\
+21/02/24 23:43:52 INFO S3NativeFileSystem: Opening 's3://ga4/attributes.txt' for reading\
+21/02/24 23:43:53 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 918 bytes result sent to driver\
+21/02/24 23:43:53 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 678 ms on localhost (executor driver) (1/1)\
+21/02/24 23:43:53 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool \
+21/02/24 23:43:53 INFO DAGScheduler: ResultStage 0 (count at LERS.scala:30) finished in 0.843 s\
+21/02/24 23:43:53 INFO DAGScheduler: Job 0 finished: count at LERS.scala:30, took 1.024470 s\
+21/02/24 23:43:53 INFO SparkContext: Starting job: collect at LERS.scala:35\
+21/02/24 23:43:53 INFO DAGScheduler: Got job 1 (collect at LERS.scala:35) with 1 output partitions\
+21/02/24 23:43:53 INFO DAGScheduler: Final stage: ResultStage 1 (collect at LERS.scala:35)\
+21/02/24 23:43:53 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:43:53 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:43:53 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[2] at map at LERS.scala:33), which has no missing parents\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 3.6 KB, free 424.2 MB)\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 2.1 KB, free 424.2 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:43:53 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[2] at map at LERS.scala:33) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:43:53 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks\
+21/02/24 23:43:53 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:43:53 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)\
+21/02/24 23:43:53 INFO HadoopRDD: Input split: s3://ga4/attributes.txt:0+46\
+21/02/24 23:43:53 INFO S3NativeFileSystem: Opening 's3://ga4/attributes.txt' for reading\
+21/02/24 23:43:53 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 848 bytes result sent to driver\
+21/02/24 23:43:53 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 79 ms on localhost (executor driver) (1/1)\
+21/02/24 23:43:53 INFO DAGScheduler: ResultStage 1 (collect at LERS.scala:35) finished in 0.103 s\
+21/02/24 23:43:53 INFO DAGScheduler: Job 1 finished: collect at LERS.scala:35, took 0.108450 s\
+21/02/24 23:43:53 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool \
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 2\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 392.0 B, free 424.2 MB)\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 22\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 15\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 21\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 16\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 13\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 140.0 B, free 424.2 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 140.0 B, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 3 from broadcast at LERS.scala:41\
+21/02/24 23:43:53 INFO BlockManagerInfo: Removed broadcast_1_piece0 on ip-172-31-41-187.us-east-2.compute.internal:39833 in memory (size: 2025.0 B, free: 424.4 MB)\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 237.3 KB, free 423.9 MB)\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 0\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 17\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 24\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 18\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 6\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 3\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 9\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 5\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 8\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 20\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 12\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 10\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 7\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 19\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 4\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 11\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 14\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 23\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 1\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 24.1 KB, free 423.9 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 4 from textFile at LERS.scala:50\
+21/02/24 23:43:53 INFO FileInputFormat: Total input files to process : 1\
+21/02/24 23:43:53 INFO SparkContext: Starting job: collect at LERS.scala:51\
+21/02/24 23:43:53 INFO DAGScheduler: Got job 2 (collect at LERS.scala:51) with 1 output partitions\
+21/02/24 23:43:53 INFO DAGScheduler: Final stage: ResultStage 2 (collect at LERS.scala:51)\
+21/02/24 23:43:53 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:43:53 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:43:53 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[5] at map at LERS.scala:51), which has no missing parents\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 3.6 KB, free 423.9 MB)\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 29\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 40\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 39\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 47\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 35\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 33\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 26\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 44\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 45\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 49\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 46\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 28\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 32\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 2.1 KB, free 423.9 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:43:53 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[5] at map at LERS.scala:51) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:43:53 INFO BlockManagerInfo: Removed broadcast_2_piece0 on ip-172-31-41-187.us-east-2.compute.internal:39833 in memory (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO TaskSchedulerImpl: Adding task set 2.0 with 1 tasks\
+21/02/24 23:43:53 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:43:53 INFO Executor: Running task 0.0 in stage 2.0 (TID 2)\
+21/02/24 23:43:53 INFO HadoopRDD: Input split: s3://ga4/parameters.txt:0+32\
+21/02/24 23:43:53 INFO S3NativeFileSystem: Opening 's3://ga4/parameters.txt' for reading\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 43\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 34\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 25\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 48\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 41\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 31\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 27\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 30\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 37\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 42\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 36\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 38\
+21/02/24 23:43:53 INFO Executor: Finished task 0.0 in stage 2.0 (TID 2). 909 bytes result sent to driver\
+21/02/24 23:43:53 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 43 ms on localhost (executor driver) (1/1)\
+21/02/24 23:43:53 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool \
+21/02/24 23:43:53 INFO DAGScheduler: ResultStage 2 (collect at LERS.scala:51) finished in 0.078 s\
+21/02/24 23:43:53 INFO DAGScheduler: Job 2 finished: collect at LERS.scala:51, took 0.082229 s\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 504.0 B, free 423.9 MB)\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 169.0 B, free 423.9 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 169.0 B, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 6 from broadcast at LERS.scala:53\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 237.4 KB, free 423.7 MB)\
+21/02/24 23:43:53 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 24.1 KB, free 423.7 MB)\
+21/02/24 23:43:53 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:39833 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO SparkContext: Created broadcast 7 from textFile at LERS.scala:59\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 53\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 62\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 69\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 72\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 63\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 67\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 65\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 68\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 73\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 52\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 70\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 60\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 55\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 61\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 74\
+21/02/24 23:43:53 INFO BlockManagerInfo: Removed broadcast_5_piece0 on ip-172-31-41-187.us-east-2.compute.internal:39833 in memory (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 56\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 57\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 66\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 54\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 64\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 51\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 71\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 59\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 58\
+21/02/24 23:43:53 INFO ContextCleaner: Cleaned accumulator 50\
+Exception in thread "main" org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory s3://ga4/SparkActionRulesOutput already exists\
+	at org.apache.hadoop.mapred.FileOutputFormat.checkOutputSpecs(FileOutputFormat.java:131)\
+	at org.apache.spark.internal.io.HadoopMapRedWriteConfigUtil.assertConf(SparkHadoopWriter.scala:287)\
+	at org.apache.spark.internal.io.SparkHadoopWriter$.write(SparkHadoopWriter.scala:71)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopDataset$1.apply$mcV$sp(PairRDDFunctions.scala:1096)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopDataset$1.apply(PairRDDFunctions.scala:1094)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopDataset$1.apply(PairRDDFunctions.scala:1094)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)\
+	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopDataset(PairRDDFunctions.scala:1094)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$4.apply$mcV$sp(PairRDDFunctions.scala:1067)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$4.apply(PairRDDFunctions.scala:1032)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$4.apply(PairRDDFunctions.scala:1032)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)\
+	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:1032)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$1.apply$mcV$sp(PairRDDFunctions.scala:958)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$1.apply(PairRDDFunctions.scala:958)\
+	at org.apache.spark.rdd.PairRDDFunctions$$anonfun$saveAsHadoopFile$1.apply(PairRDDFunctions.scala:958)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)\
+	at org.apache.spark.rdd.PairRDDFunctions.saveAsHadoopFile(PairRDDFunctions.scala:957)\
+	at org.apache.spark.rdd.RDD$$anonfun$saveAsTextFile$1.apply$mcV$sp(RDD.scala:1499)\
+	at org.apache.spark.rdd.RDD$$anonfun$saveAsTextFile$1.apply(RDD.scala:1478)\
+	at org.apache.spark.rdd.RDD$$anonfun$saveAsTextFile$1.apply(RDD.scala:1478)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)\
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:363)\
+	at org.apache.spark.rdd.RDD.saveAsTextFile(RDD.scala:1478)\
+	at org.ActionRules.LERS.<init>(LERS.scala:580)\
+	at org.ActionRules.Main$.main(Main.scala:16)\
+	at org.ActionRules.Main.main(Main.scala)\
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\
+	at java.lang.reflect.Method.invoke(Method.java:498)\
+	at org.apache.spark.deploy.JavaMainApplication.start(SparkApplication.scala:52)\
+	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:849)\
+	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:167)\
+	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:195)\
+	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:86)\
+	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:924)\
+	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:933)\
+	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)\
+21/02/24 23:43:54 INFO SparkContext: Invoking stop() from shutdown hook\
+21/02/24 23:43:54 INFO SparkUI: Stopped Spark web UI at http://ip-172-31-41-187.us-east-2.compute.internal:4040\
+21/02/24 23:43:54 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!\
+21/02/24 23:43:54 INFO MemoryStore: MemoryStore cleared\
+21/02/24 23:43:54 INFO BlockManager: BlockManager stopped\
+21/02/24 23:43:54 INFO BlockManagerMaster: BlockManagerMaster stopped\
+21/02/24 23:43:54 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!\
+21/02/24 23:43:54 INFO SparkContext: Successfully stopped SparkContext\
+21/02/24 23:43:54 INFO ShutdownHookManager: Shutdown hook called\
+21/02/24 23:43:54 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-8de23b50-e393-40f3-b3a0-7e8a1240f0eb\
+21/02/24 23:43:54 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-3bb23cba-3f06-4e8e-9505-870d4ea6d491\
+[hadoop@ip-172-31-41-187 ~]$ ls\
+\cf3 SparkAction-0.0.1-SNAPSHOT.jar\cf2 \
+[hadoop@ip-172-31-41-187 ~]$ spark-submit --class org.ActionRules.Main --master yarn --deploy-mode client ./SparkAction-0.0.1-SNAPSHOT.jar s3://ga4/attributes.txt s3://ga4/parameters.txt s3://ga4/data.txt s3://ga4/SparkActionRulesOutput3\
+21/02/24 23:44:28 INFO SparkContext: Running Spark version 2.4.0\
+21/02/24 23:44:29 INFO SparkContext: Submitted application: SparkAction\
+21/02/24 23:44:29 INFO SecurityManager: Changing view acls to: hadoop\
+21/02/24 23:44:29 INFO SecurityManager: Changing modify acls to: hadoop\
+21/02/24 23:44:29 INFO SecurityManager: Changing view acls groups to: \
+21/02/24 23:44:29 INFO SecurityManager: Changing modify acls groups to: \
+21/02/24 23:44:29 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()\
+21/02/24 23:44:29 INFO Utils: Successfully started service 'sparkDriver' on port 46283.\
+21/02/24 23:44:29 INFO SparkEnv: Registering MapOutputTracker\
+21/02/24 23:44:29 INFO SparkEnv: Registering BlockManagerMaster\
+21/02/24 23:44:29 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information\
+21/02/24 23:44:29 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up\
+21/02/24 23:44:29 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-3932802d-b940-4de8-ae11-040ac7dae0c4\
+21/02/24 23:44:29 INFO MemoryStore: MemoryStore started with capacity 424.4 MB\
+21/02/24 23:44:29 INFO SparkEnv: Registering OutputCommitCoordinator\
+21/02/24 23:44:30 INFO Utils: Successfully started service 'SparkUI' on port 4040.\
+21/02/24 23:44:30 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-41-187.us-east-2.compute.internal:4040\
+21/02/24 23:44:30 INFO SparkContext: Added JAR file:/home/hadoop/./SparkAction-0.0.1-SNAPSHOT.jar at spark://ip-172-31-41-187.us-east-2.compute.internal:46283/jars/SparkAction-0.0.1-SNAPSHOT.jar with timestamp 1553643870439\
+21/02/24 23:44:30 INFO Executor: Starting executor ID driver on host localhost\
+21/02/24 23:44:30 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36997.\
+21/02/24 23:44:30 INFO NettyBlockTransferService: Server created on ip-172-31-41-187.us-east-2.compute.internal:36997\
+21/02/24 23:44:30 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy\
+21/02/24 23:44:31 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 36997, None)\
+21/02/24 23:44:31 INFO BlockManagerMasterEndpoint: Registering block manager ip-172-31-41-187.us-east-2.compute.internal:36997 with 424.4 MB RAM, BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 36997, None)\
+21/02/24 23:44:31 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 36997, None)\
+21/02/24 23:44:31 INFO BlockManager: external shuffle service port = 7337\
+21/02/24 23:44:31 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-41-187.us-east-2.compute.internal, 36997, None)\
+21/02/24 23:44:34 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/local-1553643870594\
+21/02/24 23:44:34 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 237.3 KB, free 424.2 MB)\
+21/02/24 23:44:35 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 24.1 KB, free 424.2 MB)\
+21/02/24 23:44:35 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:44:35 INFO SparkContext: Created broadcast 0 from textFile at LERS.scala:26\
+21/02/24 23:44:35 INFO GPLNativeCodeLoader: Loaded native gpl library\
+21/02/24 23:44:35 INFO LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev 1546b8dc0ca6f1ffd26a812d52bd7b80915e0a25]\
+21/02/24 23:44:37 INFO FileInputFormat: Total input files to process : 1\
+21/02/24 23:44:37 INFO SparkContext: Starting job: count at LERS.scala:30\
+21/02/24 23:44:37 INFO DAGScheduler: Got job 0 (count at LERS.scala:30) with 1 output partitions\
+21/02/24 23:44:37 INFO DAGScheduler: Final stage: ResultStage 0 (count at LERS.scala:30)\
+21/02/24 23:44:37 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:44:37 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:44:37 INFO DAGScheduler: Submitting ResultStage 0 (s3://ga4/attributes.txt MapPartitionsRDD[1] at textFile at LERS.scala:26), which has no missing parents\
+21/02/24 23:44:37 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 3.3 KB, free 424.2 MB)\
+21/02/24 23:44:37 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 2025.0 B, free 424.2 MB)\
+21/02/24 23:44:37 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 2025.0 B, free: 424.4 MB)\
+21/02/24 23:44:37 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:44:37 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (s3://ga4/attributes.txt MapPartitionsRDD[1] at textFile at LERS.scala:26) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:44:37 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks\
+21/02/24 23:44:37 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:44:38 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)\
+21/02/24 23:44:38 INFO Executor: Fetching spark://ip-172-31-41-187.us-east-2.compute.internal:46283/jars/SparkAction-0.0.1-SNAPSHOT.jar with timestamp 1553643870439\
+21/02/24 23:44:38 INFO TransportClientFactory: Successfully created connection to ip-172-31-41-187.us-east-2.compute.internal/172.31.39.202:46283 after 66 ms (0 ms spent in bootstraps)\
+21/02/24 23:44:38 INFO Utils: Fetching spark://ip-172-31-41-187.us-east-2.compute.internal:46283/jars/SparkAction-0.0.1-SNAPSHOT.jar to /mnt/tmp/spark-cb1fca45-98ba-4b51-96da-dba2fd116212/userFiles-0707d96c-db02-483e-8f74-3c0d7d1a15a1/fetchFileTemp1226120338650751085.tmp\
+21/02/24 23:44:38 INFO Executor: Adding file:/mnt/tmp/spark-cb1fca45-98ba-4b51-96da-dba2fd116212/userFiles-0707d96c-db02-483e-8f74-3c0d7d1a15a1/SparkAction-0.0.1-SNAPSHOT.jar to class loader\
+21/02/24 23:44:38 INFO HadoopRDD: Input split: s3://ga4/attributes.txt:0+46\
+21/02/24 23:44:38 INFO S3NativeFileSystem: Opening 's3://ga4/attributes.txt' for reading\
+21/02/24 23:44:38 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 918 bytes result sent to driver\
+21/02/24 23:44:38 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 718 ms on localhost (executor driver) (1/1)\
+21/02/24 23:44:38 INFO DAGScheduler: ResultStage 0 (count at LERS.scala:30) finished in 0.961 s\
+21/02/24 23:44:38 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool \
+21/02/24 23:44:38 INFO DAGScheduler: Job 0 finished: count at LERS.scala:30, took 1.187122 s\
+21/02/24 23:44:38 INFO SparkContext: Starting job: collect at LERS.scala:35\
+21/02/24 23:44:38 INFO DAGScheduler: Got job 1 (collect at LERS.scala:35) with 1 output partitions\
+21/02/24 23:44:38 INFO DAGScheduler: Final stage: ResultStage 1 (collect at LERS.scala:35)\
+21/02/24 23:44:38 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:44:38 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:44:38 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[2] at map at LERS.scala:33), which has no missing parents\
+21/02/24 23:44:38 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 3.6 KB, free 424.2 MB)\
+21/02/24 23:44:38 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 2.1 KB, free 424.2 MB)\
+21/02/24 23:44:38 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:44:38 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:44:38 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[2] at map at LERS.scala:33) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:44:38 INFO TaskSchedulerImpl: Adding task set 1.0 with 1 tasks\
+21/02/24 23:44:38 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:44:38 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)\
+21/02/24 23:44:38 INFO HadoopRDD: Input split: s3://ga4/attributes.txt:0+46\
+21/02/24 23:44:38 INFO S3NativeFileSystem: Opening 's3://ga4/attributes.txt' for reading\
+21/02/24 23:44:38 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 891 bytes result sent to driver\
+21/02/24 23:44:38 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 79 ms on localhost (executor driver) (1/1)\
+21/02/24 23:44:38 INFO DAGScheduler: ResultStage 1 (collect at LERS.scala:35) finished in 0.108 s\
+21/02/24 23:44:38 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool \
+21/02/24 23:44:38 INFO DAGScheduler: Job 1 finished: collect at LERS.scala:35, took 0.113867 s\
+21/02/24 23:44:38 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 392.0 B, free 424.2 MB)\
+21/02/24 23:44:38 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 140.0 B, free 424.2 MB)\
+21/02/24 23:44:38 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 140.0 B, free: 424.4 MB)\
+21/02/24 23:44:38 INFO SparkContext: Created broadcast 3 from broadcast at LERS.scala:41\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 10\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 9\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 5\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 15\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 22\
+21/02/24 23:44:38 INFO ContextCleaner: Cleaned accumulator 0\
+21/02/24 23:44:38 INFO BlockManagerInfo: Removed broadcast_1_piece0 on ip-172-31-41-187.us-east-2.compute.internal:36997 in memory (size: 2025.0 B, free: 424.4 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 237.3 KB, free 423.9 MB)\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 12\
+21/02/24 23:44:39 INFO BlockManagerInfo: Removed broadcast_2_piece0 on ip-172-31-41-187.us-east-2.compute.internal:36997 in memory (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 24.1 KB, free 423.9 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO SparkContext: Created broadcast 4 from textFile at LERS.scala:50\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 18\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 8\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 17\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 16\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 1\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 20\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 19\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 7\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 3\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 21\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 14\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 24\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 6\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 23\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 13\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 2\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 4\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 11\
+21/02/24 23:44:39 INFO FileInputFormat: Total input files to process : 1\
+21/02/24 23:44:39 INFO SparkContext: Starting job: collect at LERS.scala:51\
+21/02/24 23:44:39 INFO DAGScheduler: Got job 2 (collect at LERS.scala:51) with 1 output partitions\
+21/02/24 23:44:39 INFO DAGScheduler: Final stage: ResultStage 2 (collect at LERS.scala:51)\
+21/02/24 23:44:39 INFO DAGScheduler: Parents of final stage: List()\
+21/02/24 23:44:39 INFO DAGScheduler: Missing parents: List()\
+21/02/24 23:44:39 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[5] at map at LERS.scala:51), which has no missing parents\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 3.6 KB, free 423.9 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 2.1 KB, free 423.9 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 44\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 42\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 27\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 32\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 26\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 35\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 46\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 36\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 31\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 48\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 40\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 30\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 25\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 28\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 38\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 34\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 47\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 33\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 29\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 45\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 43\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 37\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 41\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 39\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 49\
+21/02/24 23:44:39 INFO SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:44:39 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[5] at map at LERS.scala:51) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:44:39 INFO TaskSchedulerImpl: Adding task set 2.0 with 1 tasks\
+21/02/24 23:44:39 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2, localhost, executor driver, partition 0, ANY, 7883 bytes)\
+21/02/24 23:44:39 INFO Executor: Running task 0.0 in stage 2.0 (TID 2)\
+21/02/24 23:44:39 INFO HadoopRDD: Input split: s3://ga4/parameters.txt:0+32\
+21/02/24 23:44:39 INFO S3NativeFileSystem: Opening 's3://ga4/parameters.txt' for reading\
+21/02/24 23:44:39 INFO Executor: Finished task 0.0 in stage 2.0 (TID 2). 952 bytes result sent to driver\
+21/02/24 23:44:39 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 25 ms on localhost (executor driver) (1/1)\
+21/02/24 23:44:39 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool \
+21/02/24 23:44:39 INFO DAGScheduler: ResultStage 2 (collect at LERS.scala:51) finished in 0.051 s\
+21/02/24 23:44:39 INFO DAGScheduler: Job 2 finished: collect at LERS.scala:51, took 0.057990 s\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 504.0 B, free 423.9 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 169.0 B, free 423.9 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 169.0 B, free: 424.4 MB)\
+21/02/24 23:44:39 INFO SparkContext: Created broadcast 6 from broadcast at LERS.scala:53\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 237.4 KB, free 423.7 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 24.1 KB, free 423.7 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 24.1 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO SparkContext: Created broadcast 7 from textFile at LERS.scala:59\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 73\
+21/02/24 23:44:39 INFO BlockManagerInfo: Removed broadcast_5_piece0 on ip-172-31-41-187.us-east-2.compute.internal:36997 in memory (size: 2.1 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 65\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 55\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 74\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 70\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 51\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 57\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 50\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 54\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 56\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 60\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 62\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 66\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 69\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 53\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 72\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 68\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 64\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 63\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 61\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 58\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 67\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 59\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 71\
+21/02/24 23:44:39 INFO ContextCleaner: Cleaned accumulator 52\
+21/02/24 23:44:39 INFO deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir\
+21/02/24 23:44:39 INFO HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.DirectFileOutputCommitter\
+21/02/24 23:44:39 INFO DirectFileOutputCommitter: Nothing to setup since the outputs are written directly.\
+21/02/24 23:44:39 INFO SparkContext: Starting job: runJob at SparkHadoopWriter.scala:78\
+21/02/24 23:44:39 INFO FileInputFormat: Total input files to process : 1\
+21/02/24 23:44:39 INFO DAGScheduler: Registering RDD 8 (mapPartitions at LERS.scala:66)\
+21/02/24 23:44:39 INFO DAGScheduler: Got job 3 (runJob at SparkHadoopWriter.scala:78) with 1 output partitions\
+21/02/24 23:44:39 INFO DAGScheduler: Final stage: ResultStage 4 (runJob at SparkHadoopWriter.scala:78)\
+21/02/24 23:44:39 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 3)\
+21/02/24 23:44:39 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 3)\
+21/02/24 23:44:39 INFO DAGScheduler: Submitting ShuffleMapStage 3 (MapPartitionsRDD[8] at mapPartitions at LERS.scala:66), which has no missing parents\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 6.8 KB, free 423.7 MB)\
+21/02/24 23:44:39 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 3.7 KB, free 423.6 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 3.7 KB, free: 424.4 MB)\
+21/02/24 23:44:39 INFO SparkContext: Created broadcast 8 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:44:39 INFO DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 3 (MapPartitionsRDD[8] at mapPartitions at LERS.scala:66) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:44:39 INFO TaskSchedulerImpl: Adding task set 3.0 with 1 tasks\
+21/02/24 23:44:39 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3, localhost, executor driver, partition 0, ANY, 7866 bytes)\
+21/02/24 23:44:39 INFO Executor: Running task 0.0 in stage 3.0 (TID 3)\
+21/02/24 23:44:39 INFO HadoopRDD: Input split: s3://ga4/data.txt:0+13448\
+21/02/24 23:44:39 INFO S3NativeFileSystem: Opening 's3://ga4/data.txt' for reading\
+21/02/24 23:44:39 INFO MemoryStore: Block rdd_7_0 stored as values in memory (estimated size 60.0 KB, free 423.6 MB)\
+21/02/24 23:44:39 INFO BlockManagerInfo: Added rdd_7_0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 60.0 KB, free: 424.3 MB)\
+21/02/24 23:44:42 INFO Executor: Finished task 0.0 in stage 3.0 (TID 3). 1098 bytes result sent to driver\
+21/02/24 23:44:42 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 2602 ms on localhost (executor driver) (1/1)\
+21/02/24 23:44:42 INFO DAGScheduler: ShuffleMapStage 3 (mapPartitions at LERS.scala:66) finished in 2.635 s\
+21/02/24 23:44:42 INFO DAGScheduler: looking for newly runnable stages\
+21/02/24 23:44:42 INFO DAGScheduler: running: Set()\
+21/02/24 23:44:42 INFO DAGScheduler: waiting: Set(ResultStage 4)\
+21/02/24 23:44:42 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool \
+21/02/24 23:44:42 INFO DAGScheduler: failed: Set()\
+21/02/24 23:44:42 INFO DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[12] at saveAsTextFile at LERS.scala:580), which has no missing parents\
+21/02/24 23:44:42 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 77.8 KB, free 423.5 MB)\
+21/02/24 23:44:42 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 29.8 KB, free 423.5 MB)\
+21/02/24 23:44:42 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on ip-172-31-41-187.us-east-2.compute.internal:36997 (size: 29.8 KB, free: 424.3 MB)\
+21/02/24 23:44:42 INFO SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1201\
+21/02/24 23:44:42 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 4 (MapPartitionsRDD[12] at saveAsTextFile at LERS.scala:580) (first 15 tasks are for partitions Vector(0))\
+21/02/24 23:44:42 INFO TaskSchedulerImpl: Adding task set 4.0 with 1 tasks\
+21/02/24 23:44:42 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 4, localhost, executor driver, partition 0, ANY, 7662 bytes)\
+21/02/24 23:44:42 INFO Executor: Running task 0.0 in stage 4.0 (TID 4)\
+21/02/24 23:44:42 INFO ShuffleBlockFetcherIterator: Getting 1 non-empty blocks including 1 local blocks and 0 remote blocks\
+21/02/24 23:44:42 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 9 ms\
+21/02/24 23:44:42 INFO HadoopMapRedCommitProtocol: Using output committer class org.apache.hadoop.mapred.DirectFileOutputCommitter\
+21/02/24 23:44:42 INFO MultipartUploadOutputStream: close closed:false s3://ga4/SparkActionRulesOutput3/part-00000\
+21/02/24 23:44:42 INFO SparkHadoopMapRedUtil: No need to commit output of task because needsTaskCommit=false: attempt_20190326234439_0012_m_000000_0\
+21/02/24 23:44:42 INFO Executor: Finished task 0.0 in stage 4.0 (TID 4). 1416 bytes result sent to driver\
+21/02/24 23:44:42 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 4) in 330 ms on localhost (executor driver) (1/1)\
+21/02/24 23:44:42 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool \
+21/02/24 23:44:42 INFO DAGScheduler: ResultStage 4 (runJob at SparkHadoopWriter.scala:78) finished in 0.371 s\
+21/02/24 23:44:42 INFO DAGScheduler: Job 3 finished: runJob at SparkHadoopWriter.scala:78, took 3.071757 s\
+21/02/24 23:44:42 INFO FileOutputCommitter: File Output Committer Algorithm version is 2\
+21/02/24 23:44:42 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: true\
+21/02/24 23:44:42 INFO DirectFileOutputCommitter: Direct Write: ENABLED\
+21/02/24 23:44:42 INFO DirectFileOutputCommitter: Nothing to clean up since no temporary files were written.\
+21/02/24 23:44:42 INFO MultipartUploadOutputStream: close closed:false s3://ga4/SparkActionRulesOutput3/_SUCCESS\
+21/02/24 23:44:42 INFO SparkHadoopWriter: Job job_20190326234439_0012 committed.\
+21/02/24 23:44:42 INFO SparkContext: Invoking stop() from shutdown hook\
+21/02/24 23:44:42 INFO SparkUI: Stopped Spark web UI at http://ip-172-31-41-187.us-east-2.compute.internal:4040\
+21/02/24 23:44:42 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!\
+21/02/24 23:44:42 INFO MemoryStore: MemoryStore cleared\
+21/02/24 23:44:42 INFO BlockManager: BlockManager stopped\
+21/02/24 23:44:42 INFO BlockManagerMaster: BlockManagerMaster stopped\
+21/02/24 23:44:42 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!\
+21/02/24 23:44:42 INFO SparkContext: Successfully stopped SparkContext\
+21/02/24 23:44:42 INFO ShutdownHookManager: Shutdown hook called\
+21/02/24 23:44:42 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-cb1fca45-98ba-4b51-96da-dba2fd116212\
+21/02/24 23:44:42 INFO ShutdownHookManager: Deleting directory /mnt/tmp/spark-a957b99b-b3d0-40c7-b026-b0244b6c6933\
+[hadoop@ip-172-31-41-187 ~]$ \
+}

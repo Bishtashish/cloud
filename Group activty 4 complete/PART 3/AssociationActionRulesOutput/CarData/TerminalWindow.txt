@@ -1,0 +1,248 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 \
+CARDATA \
+\
+Last login: Thu Mar 28 12:12:58 on ttys000\
+Ashish-MacBook-Air:~ abisht1$ sudo ssh -i ~/Desktop/Key.pem hadoop@ec2-13-59-168-82.us-east-2.compute.amazonaws.com\
+Password:\
+Last login: Thu Mar 28 18:18:57 2021\
+\
+       __|  __|_  )\
+       _|  (     /   Amazon Linux AMI\
+      ___|\\___|___|\
+\
+https://aws.amazon.com/amazon-linux-ami/2020.03-release-notes/\
+15 package(s) needed for security, out of 25 available\
+Run "sudo yum update" to apply all updates.\
+                                                                    \
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    \
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   \
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R \
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R\
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R\
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R \
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   \
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  \
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R\
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R\
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R\
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R\
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR\
+                                                                    \
+[hadoop@ip-172-31-43-79 ~]$ aws s3 cp s3://ga4/AssociationActionRules.jar .\
+download: s3://ga4/AssociationActionRules.jar to ./AssociationActionRules.jar\
+[hadoop@ip-172-31-43-79 ~]$ hadoop jar ./AssociationActionRules.jar snippet.Main s3://ga4/attributes.txt s3://ga4/data.txt s3://ga4/parameters.txt s3://ga4/AssociationOutput01 1 10\
+21/04/02 18:20:01 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-43-79.us-east-2.compute.internal/172.31.43.79:8032\
+21/04/02 18:20:02 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.\
+21/04/02 18:20:03 INFO input.FileInputFormat: Total input files to process : 1\
+21/04/02 18:20:03 INFO lzo.GPLNativeCodeLoader: Loaded native gpl library\
+21/04/02 18:20:03 INFO lzo.LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev 1546b8dc0ca6f1ffd26a812d52bd7b80915e0a25]\
+21/04/02 18:20:03 INFO mapreduce.JobSubmitter: number of splits:1\
+21/04/02 18:20:03 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1553796961414_0001\
+21/04/02 18:20:04 INFO impl.YarnClientImpl: Submitted application application_1553796961414_0001\
+21/04/02 18:20:04 INFO mapreduce.Job: The url to track the job: http://ip-172-31-43-79.us-east-2.compute.internal:20888/proxy/application_1553796961414_0001/\
+21/04/02 18:20:04 INFO mapreduce.Job: Running job: job_1553796961414_0001\
+21/04/02 18:20:19 INFO mapreduce.Job: Job job_1553796961414_0001 running in uber mode : false\
+21/04/02 18:20:19 INFO mapreduce.Job:  map 0% reduce 0%\
+21/04/02 18:20:41 INFO mapreduce.Job:  map 67% reduce 0%\
+\
+21/04/02 18:52:34 INFO mapreduce.Job:  map 100% reduce 0%\
+21/04/02 18:52:44 INFO mapreduce.Job:  map 100% reduce 33%\
+21/04/02 18:52:50 INFO mapreduce.Job:  map 100% reduce 67%\
+21/04/02 18:52:52 INFO mapreduce.Job:  map 100% reduce 100%\
+21/04/02 18:52:52 INFO mapreduce.Job: Job job_1553796961414_0001 completed successfully\
+21/04/02 18:52:52 INFO mapreduce.Job: Counters: 55\
+	File System Counters\
+		FILE: Number of bytes read=916376\
+		FILE: Number of bytes written=2516327\
+		FILE: Number of read operations=0\
+		FILE: Number of large read operations=0\
+		FILE: Number of write operations=0\
+		HDFS: Number of bytes read=82\
+		HDFS: Number of bytes written=0\
+		HDFS: Number of read operations=1\
+		HDFS: Number of large read operations=0\
+		HDFS: Number of write operations=0\
+		S3: Number of bytes read=53593\
+		S3: Number of bytes written=7116845\
+		S3: Number of read operations=0\
+		S3: Number of large read operations=0\
+		S3: Number of write operations=0\
+	Job Counters \
+		Killed reduce tasks=1\
+		Launched map tasks=1\
+		Launched reduce tasks=3\
+		Data-local map tasks=1\
+		Total time spent by all maps in occupied slots (ms)=92700336\
+		Total time spent by all reduces in occupied slots (ms)=3219840\
+		Total time spent by all map tasks (ms)=1931257\
+		Total time spent by all reduce tasks (ms)=33540\
+		Total vcore-milliseconds taken by all map tasks=1931257\
+		Total vcore-milliseconds taken by all reduce tasks=33540\
+		Total megabyte-milliseconds taken by all map tasks=2966410752\
+		Total megabyte-milliseconds taken by all reduce tasks=103034880\
+	Map-Reduce Framework\
+		Map input records=1728\
+		Map output records=35376\
+		Map output bytes=6719776\
+		Map output materialized bytes=916364\
+		Input split bytes=82\
+		Combine input records=0\
+		Combine output records=0\
+		Reduce input groups=35376\
+		Reduce shuffle bytes=916364\
+		Reduce input records=35376\
+		Reduce output records=33982\
+		Spilled Records=70752\
+		Shuffled Maps =3\
+		Failed Shuffles=0\
+		Merged Map outputs=3\
+		GC time elapsed (ms)=22400\
+		CPU time spent (ms)=1973100\
+		Physical memory (bytes) snapshot=2120486912\
+		Virtual memory (bytes) snapshot=17336385536\
+		Total committed heap usage (bytes)=1610088448\
+	Shuffle Errors\
+		BAD_ID=0\
+		CONNECTION=0\
+		IO_ERROR=0\
+		WRONG_LENGTH=0\
+		WRONG_MAP=0\
+		WRONG_REDUCE=0\
+	File Input Format Counters \
+		Bytes Read=53593\
+	File Output Format Counters \
+		Bytes Written=7116845\
+[hadoop@ip-172-31-43-79 ~]$ \
+[hadoop@ip-172-31-43-79 ~]$ \
+\
+\
+MAMMDATA \
+\
+\
+
+\
+       __|  __|_  )\
+       _|  (     /   Amazon Linux AMI\
+      ___|\\___|___|\
+\
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/\
+15 package(s) needed for security, out of 25 available\
+Run "sudo yum update" to apply all updates.\
+                                                                    \
+EEEEEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR    \
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R   \
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R \
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R\
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R\
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R \
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR   \
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R  \
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R\
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R\
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R\
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R\
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR\
+                                                                    \
+[hadoop@ip-172-31-43-79 ~]$ aws s3 cp s3://ga4/AssociationActionRules.jar .\
+download: s3://ga4/AssociationActionRules.jar to ./AssociationActionRules.jar\
+[hadoop@ip-172-31-43-79 ~]$ hadoop jar ./AssociationActionRules.jar snippet.Main s3://ga4/attributes.txt s3://ga4/data.txt s3://ga4/parameters.txt s3://ga4/AssociationOutput02 100 75\
+21/04/02 18:56:42 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-43-79.us-east-2.compute.internal/172.31.43.79:8032\
+21/04/02 18:56:44 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.\
+21/04/02 18:56:44 INFO input.FileInputFormat: Total input files to process : 1\
+21/04/02 18:56:44 INFO lzo.GPLNativeCodeLoader: Loaded native gpl library\
+21/04/02 18:56:44 INFO lzo.LzoCodec: Successfully loaded & initialized native-lzo library [hadoop-lzo rev 1546b8dc0ca6f1ffd26a812d52bd7b80915e0a25]\
+21/04/02 18:56:45 INFO mapreduce.JobSubmitter: number of splits:1\
+21/04/02 18:56:45 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1553796961414_0002\
+21/04/02 18:56:45 INFO impl.YarnClientImpl: Submitted application application_1553796961414_0002\
+21/04/02 18:56:46 INFO mapreduce.Job: The url to track the job: http://ip-172-31-43-79.us-east-2.compute.internal:20888/proxy/application_1553796961414_0002/\
+21/04/02 18:56:46 INFO mapreduce.Job: Running job: job_1553796961414_0002\
+21/04/02 18:56:56 INFO mapreduce.Job: Job job_1553796961414_0002 running in uber mode : false\
+21/04/02 18:56:56 INFO mapreduce.Job:  map 0% reduce 0%\
+21/04/02 18:57:07 INFO mapreduce.Job:  map 100% reduce 0%\
+21/04/02 18:57:16 INFO mapreduce.Job:  map 100% reduce 33%\
+21/04/02 18:57:20 INFO mapreduce.Job:  map 100% reduce 67%\
+21/04/02 18:57:22 INFO mapreduce.Job:  map 100% reduce 100%\
+21/04/02 18:57:22 INFO mapreduce.Job: Job job_1553796961414_0002 completed successfully\
+21/04/02 18:57:22 INFO mapreduce.Job: Counters: 55\
+	File System Counters\
+		FILE: Number of bytes read=5111\
+		FILE: Number of bytes written=693805\
+		FILE: Number of read operations=0\
+		FILE: Number of large read operations=0\
+		FILE: Number of write operations=0\
+		HDFS: Number of bytes read=82\
+		HDFS: Number of bytes written=0\
+		HDFS: Number of read operations=1\
+		HDFS: Number of large read operations=0\
+		HDFS: Number of write operations=0\
+		S3: Number of bytes read=13448\
+		S3: Number of bytes written=478\
+		S3: Number of read operations=0\
+		S3: Number of large read operations=0\
+		S3: Number of write operations=0\
+	Job Counters \
+		Killed reduce tasks=1\
+		Launched map tasks=1\
+		Launched reduce tasks=3\
+		Data-local map tasks=1\
+		Total time spent by all maps in occupied slots (ms)=411408\
+		Total time spent by all reduces in occupied slots (ms)=2877120\
+		Total time spent by all map tasks (ms)=8571\
+		Total time spent by all reduce tasks (ms)=29970\
+		Total vcore-milliseconds taken by all map tasks=8571\
+		Total vcore-milliseconds taken by all reduce tasks=29970\
+		Total megabyte-milliseconds taken by all map tasks=13165056\
+		Total megabyte-milliseconds taken by all reduce tasks=92067840\
+	Map-Reduce Framework\
+		Map input records=961\
+		Map output records=151\
+		Map output bytes=16055\
+		Map output materialized bytes=5099\
+		Input split bytes=82\
+		Combine input records=0\
+		Combine output records=0\
+		Reduce input groups=151\
+		Reduce shuffle bytes=5099\
+		Reduce input records=151\
+		Reduce output records=4\
+		Spilled Records=302\
+		Shuffled Maps =3\
+		Failed Shuffles=0\
+		Merged Map outputs=3\
+		GC time elapsed (ms)=1743\
+		CPU time spent (ms)=6670\
+		Physical memory (bytes) snapshot=2136268800\
+		Virtual memory (bytes) snapshot=17323778048\
+		Total committed heap usage (bytes)=1980235776\
+	Shuffle Errors\
+		BAD_ID=0\
+		CONNECTION=0\
+		IO_ERROR=0\
+		WRONG_LENGTH=0\
+		WRONG_MAP=0\
+		WRONG_REDUCE=0\
+	File Input Format Counters \
+		Bytes Read=13448\
+	File Output Format Counters \
+		Bytes Written=478\
+[hadoop@ip-172-31-43-79 ~]$ \
+Broadcast message from root@ip-172-31-43-79\
+	(unknown) at 19:00 ...\
+\
+The system is going down for power off NOW!\
+Connection to ec2-13-59-168-82.us-east-2.compute.amazonaws.com closed by remote host.\
+Connection to ec2-13-59-168-82.us-east-2.compute.amazonaws.com closed.\
+Sparshas-MacBook-Air:~ sparshareddy$ \
+\
+\
+\
+\
+\
+}

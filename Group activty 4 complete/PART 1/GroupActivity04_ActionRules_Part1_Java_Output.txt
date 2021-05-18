@@ -1,0 +1,38 @@
+
+Please Give a choice
+1.Enter Stable Attributes...
+2.Go next...1
+
+Attributes Available
+--------------------------------
+buying	maint	doors	persons	lugBoot	safety	class	
+Enter a Stable attribute...doors
+
+Stable Attributes [doors5more, doors2, doors3, doors4]
+Please Give a choice
+1.Enter Stable Attributes...
+2.Go next...2
+
+Data size 25
+Attributes Available
+--------------------------------
+buying	maint	persons	lugBoot	safety	class	
+Enter a Decision attribute...maint
+
+Available Decision values
+maintvhigh	mainthigh	maintlow	maintmed	
+Change Decision From...mainthigh
+
+Available Decision values
+maintvhigh	mainthigh	maintlow	maintmed	
+Change Decision To...maintvhigh
+
+Enter Minimum Support...1
+
+Enter Minimum Confidence Percentage...10
+
+
+Action Rules
+--------------------------------
+
+Total Time :260.701
